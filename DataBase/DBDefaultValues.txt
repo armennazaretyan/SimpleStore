@@ -1,0 +1,49 @@
+INSERT INTO [dbo].[Category] ([Name]) VALUES ('Wood')
+GO
+INSERT INTO [dbo].[Category] ([Name]) VALUES ('Iron')
+GO
+INSERT INTO [dbo].[Category] ([Name]) VALUES ('Plastic')
+GO
+INSERT INTO [dbo].[Category] ([Name]) VALUES ('Fluid')
+GO
+
+
+
+INSERT INTO [dbo].[Product]
+           ([CategoryID]
+           ,[Name]
+           ,[ImagePath]
+           ,[Price])
+     VALUES
+           (2
+           ,'Product 1'
+           ,'prod1.jpg'
+           ,'2500')
+GO
+
+INSERT INTO [dbo].[Product]
+           ([CategoryID]
+           ,[Name]
+           ,[ImagePath]
+           ,[Price])
+     VALUES
+           (2
+           ,'Product 2'
+           ,'prod2.jpg'
+           ,'800')
+GO
+
+
+INSERT INTO [dbo].[Product]
+           ([CategoryID]
+           ,[Name]
+           ,[ImagePath]
+           ,[Price])
+     VALUES
+           (4
+           ,'Product 3'
+           ,'prod3.jpg'
+           ,'1400')
+GO
+
+
