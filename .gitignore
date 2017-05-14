@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/BusinessLayer/obj/Debug
+/DataAccessLayer/obj/Debug
+/packages
+/SimpleStoreWeb/bin
+/SimpleStoreWeb/obj/Debug
+/Utilities/obj/Debug

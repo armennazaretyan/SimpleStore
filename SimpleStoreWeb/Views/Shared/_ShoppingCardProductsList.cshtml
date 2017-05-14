@@ -1,0 +1,51 @@
+﻿@model SimpleStoreWeb.Models.ShoppingCardViewModel
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Hover Rows
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ShoppingCardProducts)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Index", "ProductDetail", new { id = item.ProductID })" class="btn btn-sm btn-danger">@item.ProductName</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td style="min-width: 190px;">
+                                <a href="@Url.Action("RemoveProduct", new { id = item.ProductID })" class="btn btn-sm btn-danger">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>
+<span style="color: red;">
+    Total Price: @Model.TotalPrice
+</span>
+

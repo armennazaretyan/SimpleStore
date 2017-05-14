@@ -1,0 +1,79 @@
+﻿@model SimpleStoreWeb.Models.PaymentViewModel
+
+@{
+    //Layout = "/Views/Shared/_SympleLayout.cshtml";
+    ViewBag.Title = "Payment";
+}
+
+<h2>Payment</h2>
+
+
+@using (Html.BeginForm("SubmitPayment", "Payment"))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="text-center" style="padding:50px 0">
+        <div class="logo"></div>
+        <!-- Main Form -->
+        <div class="login-form-1">
+            <form id="login-form" class="text-left">
+                <div class="login-form-main-message"></div>
+                <div class="main-login-form">
+                    <div class="login-group" style="width: 200px;">
+                        <div class="form-group">
+                            @Html.Label("First Name", new { @class = "sr-only", @for = "first_name" })
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First Name", name = "first_name", required = "required" })
+                            @Html.ValidationMessageFor(model => model.FirstName)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Last Name", new { @class = "sr-only", @for = "last_name" })
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last Name", name = "last_name", required = "required" })
+                            @Html.ValidationMessageFor(model => model.LastName)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Address", new { @class = "sr-only", @for = "address" })
+                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Address", name = "address", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Address)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("City", new { @class = "sr-only", @for = "city" })
+                            @Html.TextBoxFor(model => model.City, new { @class = "form-control", placeholder = "City", name = "city" })
+                            @Html.ValidationMessageFor(model => model.City)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("State", new { @class = "sr-only", @for = "state" })
+                            @Html.TextBoxFor(model => model.State, new { @class = "form-control", placeholder = "State", name = "state" })
+                            @Html.ValidationMessageFor(model => model.State)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("PostalCode", new { @class = "sr-only", @for = "postal_code" })
+                            @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control", placeholder = "PostalCode", name = "postal_code" })
+                            @Html.ValidationMessageFor(model => model.PostalCode)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Country", new { @class = "sr-only", @for = "country" })
+                            @Html.TextBoxFor(model => model.Country, new { @class = "form-control", placeholder = "Country", name = "country" })
+                            @Html.ValidationMessageFor(model => model.Country)
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Phone", new { @class = "sr-only", @for = "phone" })
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", placeholder = "Phone", name = "phone" })
+                            @Html.ValidationMessageFor(model => model.Phone)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Email", new { @class = "sr-only", @for = "email" })
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "Email", name = "email", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+
+                    </div>
+                    <button type="submit" class="login-button"><i class="fa fa-chevron-right">Submit</i></button>
+                </div>
+            </form>
+        </div>
+        <!-- end:Main Form -->
+    </div>
+
+}

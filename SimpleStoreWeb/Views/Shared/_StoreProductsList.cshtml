@@ -1,0 +1,81 @@
+﻿@model SimpleStoreWeb.Models.StoreViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Categories)
+                        {
+                            <tr>
+                                <td style="min-width: 190px;">
+                                    <a href="@Url.Action("Categorty", new { id = item.ID })" class="btn btn-sm btn-danger">@item.Name</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <span class="pull-right" style="width: 100%;">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Hover Rows
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Image</th>
+                                        <th>Price</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Products)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ID)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ImagePath)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Price)
+                                            </td>
+                                            <td style="min-width: 190px;">
+                                                <a href="@Url.Action("IncreaseProductCount", new { id = item.ID })" class="btn btn-sm btn-danger">+</a>
+                                                <a href="@Url.Action("DecreaseProductCount", new { id = item.ID })" class="btn btn-sm btn-warning">-</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+
+            </span>
+        </div>
+    </div>
+</div>
+
