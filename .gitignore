@@ -8,3 +8,6 @@
 /SimpleStoreWeb/bin
 /SimpleStoreWeb/obj/Debug
 /Utilities/obj/Debug
+/BusinessLayer/bin/Debug
+/DataAccessLayer/bin/Debug
+/Utilities/bin/Debug

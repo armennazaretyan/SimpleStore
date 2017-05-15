@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.InfoServices;
 using BusinessLayer.Interfaces;
 using Ninject;
+using Ninject.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace SimpleStoreWeb.App_Start
         public NinjectDependencyResolver()
         {
             kernel = new StandardKernel();
-            AddBindings();
+            AddBindings(kernel);
         }
 
         public object GetService(Type serviceType)
@@ -32,13 +33,14 @@ namespace SimpleStoreWeb.App_Start
             return kernel.GetAll(serviceType);
         }
 
-        private void AddBindings()
+        public static void AddBindings(IKernel kernel)
         {
             //kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
-            kernel.Bind<IUserService>().To<UserService>();//.WithConstructorArgument("unit", m => m.Kernel.Get<IUnitOfWork>());
-            kernel.Bind<ICategoryService>().To<CategoryService>();//.WithConstructorArgument("unit", m => m.Kernel.Get<IUnitOfWork>());
-            kernel.Bind<IProductService>().To<ProductService>();//.WithConstructorArgument("unit", m => m.Kernel.Get<IUnitOfWork>());
-            kernel.Bind<IOrderService>().To<OrderService>();//.WithConstructorArgument("unit", m => m.Kernel.Get<IUnitOfWork>());
+            kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<ICategoryService>().To<CategoryService>();
+            kernel.Bind<IProductService>().To<ProductService>();
+            kernel.Bind<IOrderService>().To<OrderService>();
+
             //kernel.Inject(Membership.Provider);
         }
     }

@@ -128,8 +128,19 @@ namespace BusinessLayer.InfoServices
 
         public bool RemoveProductFromShoppingCard(int userID, int productID)
         {
-            bool retVal = _UnitOfWork.ShoppingCard.RemoveProductFromShoppingCard(userID, productID);
-            _UnitOfWork.Complete();
+            bool retVal = false;
+
+            try
+            {
+                _UnitOfWork.ShoppingCard.RemoveProductFromShoppingCard(userID, productID);
+                _UnitOfWork.Complete();
+
+                retVal = true;
+            }
+            catch (Exception ex)
+            {
+                retVal = false;
+            }
 
             return retVal;
         }
