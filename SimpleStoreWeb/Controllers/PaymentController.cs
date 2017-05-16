@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interfaces;
 using SimpleStoreWeb.Models;
+using SimpleStoreWeb.WebClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace SimpleStoreWeb.Controllers
     [Authorize]
     public class PaymentController : BaseController
     {
+        private Ambrella ambrella;
+
         private IUserService userService;
         private IOrderService orderService;
 
@@ -18,6 +21,7 @@ namespace SimpleStoreWeb.Controllers
         {
             userService = _userService;
             orderService = _orderService;
+            ambrella = new Ambrella(userService, null, null, orderService);
         }
 
 
@@ -31,23 +35,35 @@ namespace SimpleStoreWeb.Controllers
         [HttpPost]
         public ActionResult SubmitPayment(PaymentViewModel model)
         {
+            //if (ModelState.IsValid)
+            //{
+            //    int userID = userService.Get(CurrentUserLoginName).ID;
+
+            //    orderService.Add(new BusinessLayer.Models.OrderModel()
+            //    {
+            //        FirstName = model.FirstName,
+            //        LastName = model.LastName,
+            //        Address = model.Address,
+            //        City = model.City,
+            //        State = model.State,
+            //        PostalCode = model.PostalCode,
+            //        Country = model.Country,
+            //        Phone = model.Phone,
+            //        Email = model.Email
+            //    }, userID);
+
+            //    return RedirectToAction("Index", "Store");
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("", "Fill required fields.");
+            //}
+
+            //return View("Index", model);
+
             if (ModelState.IsValid)
             {
-                int userID = userService.Get(CurrentUserLoginName).ID;
-
-                orderService.Add(new BusinessLayer.Models.OrderModel()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Address = model.Address,
-                    City = model.City,
-                    State = model.State,
-                    PostalCode = model.PostalCode,
-                    Country = model.Country,
-                    Phone = model.Phone,
-                    Email = model.Email
-                }, userID);
-
+                ambrella.SubmitPayment(model);
                 return RedirectToAction("Index", "Store");
             }
             else

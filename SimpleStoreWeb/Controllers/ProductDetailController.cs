@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interfaces;
 using SimpleStoreWeb.Models;
+using SimpleStoreWeb.WebClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace SimpleStoreWeb.Controllers
     [Authorize]
     public class ProductDetailController : BaseController
     {
+        private Ambrella ambrella;
+
+
         private ICategoryService categoryService;
         private IProductService productService;
 
@@ -20,20 +24,23 @@ namespace SimpleStoreWeb.Controllers
         {
             categoryService = _categoryService;
             productService = _productService;
+
+            ambrella = new Ambrella(null, categoryService, productService, null);
         }
 
         // GET: ProductDetail
         public ActionResult Index(int id)
         {
-            ProductViewModel productViewModel = new ProductViewModel();
+            //ProductViewModel productViewModel = new ProductViewModel();
 
-            var product = productService.GetDetails(id);
-            productViewModel.ProductName = product.Name;
-            productViewModel.Price = product.Price;
-            productViewModel.ImagePath = product.ImagePath;
-            productViewModel.CategoryName = categoryService.GetByID(product.CategoryID).Name;
+            //var product = productService.GetDetails(id);
+            //productViewModel.ProductName = product.Name;
+            //productViewModel.Price = product.Price;
+            //productViewModel.ImagePath = product.ImagePath;
+            //productViewModel.CategoryName = categoryService.GetByID(product.CategoryID).Name;
 
-            return View(productViewModel);
+            //return View(productViewModel);
+            return View(ambrella.GetProductDetail(id));
         }
     }
 }
